@@ -3,7 +3,7 @@
 
 <body background="1.jpg" width:100%; height:100%>
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-  <form align="left" action="addAnnouncementSuc.jsp" method="post">
+  <form align="left" action="admin/addAnnouncementSuc.jsp" method="post">
 		</br>Time:<input type="text" name="newTime" >
 		</br>announcement
 		
@@ -14,7 +14,7 @@
 		</form>
 		
 		
-		<form align="left" action="FrontPageAdmin.jsp" method="get">
+		<form align="left" action="admin/FrontPageAdmin.jsp" method="get">
 		Back to HomePage!
 		</tr><input type="submit" value="Back" />
 		</form>

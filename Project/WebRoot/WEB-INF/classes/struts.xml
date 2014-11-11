@@ -3,12 +3,12 @@
 <struts>
 	<package extends="struts-default" name="default" namespace="/">
 		<action name="signin" class="action.signin">
-			<result name="success">/FrontPageUser.jsp</result>
-			<result name="failure">/LoginFailed.jsp</result>
+			<result name="success">FrontPageUser.jsp</result>
+			<result name="failure">LoginFailed.jsp</result>
 		</action>
 		
 		<action name="adminlog" class="action.adminlog">
-			<result name="success">/FrontPageAdmin.jsp</result>
+			<result name="success">FrontPageAdmin.jsp</result>
 			<result name="failure">/LoginFailed.jsp</result>
 		</action>
 		

@@ -9,7 +9,7 @@ background:url(2.jpg) no-repeat;
 } 
 </style>
 </head>
- <body background="2.jpg" width='100%' height='100%' >
+ <body background="images/2.jpg" width='100%' height='100%' >
 
 <h1 align="center" >User Login</h1>
 		<form align="center" action="signin" method="post">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body background="1.jpg" width:100%; height:100%>
+<body background="images/1.jpg" width:100%; height:100%>
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
   <form align="left" action="SignUpSubmit.jsp" method="post">
 		</br>LoginName:<input type="text" name="newName">

@@ -1,24 +1,20 @@
 <%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %>
 <html>
- <body align="left" background="3.jpg">
+ <body align="left" background="images/3.jpg">
 		<h1 align="left">Stadium</h1>
 		<h3 >Welcome!</h3>
 		
 <%! 
-String host="localhost"; //数据库主机 
-String database="test"; //数据库名 
-String user="zh"; //用户名 
-String pass=""; //口令 
-%><% java.sql.Connection sqlConn; //数据库连接对象 
-java.sql.Statement sqlStmt; //语句对象 
-java.sql.ResultSet sqlRst; //结果集对象 
-//登记JDBC驱动对象 
+String host="localhost"; 
+String database="test"; 
+String user="zh"; 
+String pass=""; 
+%><% java.sql.Connection sqlConn; 
+java.sql.Statement sqlStmt; 
+java.sql.ResultSet sqlRst; 
 Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
-//连接数据库 
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass); 
-//创建语句对象 
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-//执行Sql语句 
 
 String a="*";
 String sqlquery="select "+a+" from announce"; 
@@ -101,9 +97,9 @@ username=cookies[i].getValue();
  %>
 
 
-<left ><font face="黑体" color="white" size="4" >Public Annonucement</font ></left >
+<left ><font face="" color="white" size="4" >Public Annonucement</font ></left >
 
-<% while (sqlRst.next()) { //取得下一条记录 %> 
+<% while (sqlRst.next()) {  %> 
 
 <marquee style="WIDTH: 388px; HEIGHT: 200px" scrollamount="2" direction="up" >
 <div align="left" ><br />
@@ -137,6 +133,6 @@ username=cookies[i].getValue();
 
 <% 
 
-sqlStmt.close (); //关闭数据库连接 
+sqlStmt.close (); 
 sqlConn.close(); 
 %> 

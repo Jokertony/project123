@@ -31,6 +31,7 @@ sqlRst=sqlStmt.executeQuery (sqlQuery);
   <td align="center">remains field</td> 
   <td align="center">manager</td> 
   <td align="center">telephone</td> 
+  <td align="center">update</td>
 </tr> 
 
 <% while (sqlRst.next()) { //取得下一条记录 %> 
@@ -39,39 +40,26 @@ sqlRst=sqlStmt.executeQuery (sqlQuery);
   <td align="center"><%=sqlRst.getString("kind")%></td> 
   <td align="center"><%=sqlRst.getString("remainsField")%></td> 
   <td align="center"><%=sqlRst.getString("manager")%></td> 
-  <td align="center"><%=sqlRst.getString("telephone")%></td> 
+  <td align="center"><%=sqlRst.getString("telephone")%></td>
+   <td><form align="center" action="AdminUpdate.jsp" method="post">
+		<h3>
+		<input type="submit" value="update">
+		</h3>
+		</form></td> 
 </tr> 
 <% } %> 
 </table> 
-<form align="center" action="OutdoorDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="OutdoorsDetail">
-		</h3>
-		</form>
-	<form align="center" action="stadiumDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="StadiumsDetail">
-		</h3>
-		</form>
-	<form align="center" action="ZhengxinDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="Zhengxin Buiding">
-		</h3>
-		</form>
+
 
 
 
 <br></br>
 <br></br><br></br><br></br>
 
-<form align="center" action="FrontPageUser.jsp" method="get">
+<form align="center" action="FrontPageAdmin.jsp" method="get">
 		Back to HomePage!
 		</tr><input type="submit" value="Back" />
 		</form>
-
-</body> 
-
-
 
 
 </body> 
