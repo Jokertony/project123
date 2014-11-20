@@ -1,89 +1,82 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
-<html> 
+<!DOCTYPE HTML>
 
-<body bgcolor="AntiqueWhite"> 
-<p align="center"><u><font size="5" face="»ªÎÄĞÂÎº">All Messages</font></u></p> 
-<%! 
-String host="localhost"; //Êı¾İ¿âÖ÷»ú 
-String database="test"; //Êı¾İ¿âÃû 
-String user="zh"; //ÓÃ»§Ãû 
-String pass=""; //¿ÚÁî 
-%><% java.sql.Connection sqlConn; //Êı¾İ¿âÁ¬½Ó¶ÔÏó 
-java.sql.Statement sqlStmt; //Óï¾ä¶ÔÏó 
-java.sql.ResultSet sqlRst; //½á¹û¼¯¶ÔÏó 
-//µÇ¼ÇJDBCÇı¶¯¶ÔÏó 
-Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
-//Á¬½ÓÊı¾İ¿â 
-sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass);
-//´´½¨Óï¾ä¶ÔÏó 
-sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-//Ö´ĞĞSqlÓï¾ä 
-String a="*";
-String sqlQuery="select "+a+" from Stadiums"; 
-sqlRst=sqlStmt.executeQuery (sqlQuery);
-%>
-
-
-<table align="center" border="1" width="50%" bordercolorlight="#CC99FF" cellpadding="2" bordercolordark="#FFFFFF" cellspacing="0"> 
-<tr> 
-  <td align="center">Stadium Name</td> 
-  <td align="center">kind</td> 
-  <td align="center">remains field</td> 
-  <td align="center">manager</td> 
-  <td align="center">telephone</td> 
-</tr> 
-
-<% while (sqlRst.next()) { //È¡µÃÏÂÒ»Ìõ¼ÇÂ¼ %> 
-<tr><!--ÏÔÊ¾¼ÇÂ¼--> 
-  <td align="center"><%=sqlRst.getString("Stadium Name")%></td> 
-  <td align="center"><%=sqlRst.getString("kind")%></td> 
-  <td align="center"><%=sqlRst.getString("remainsField")%></td> 
-  <td align="center"><%=sqlRst.getString("manager")%></td> 
-  <td align="center"><%=sqlRst.getString("telephone")%></td> 
-</tr> 
-<% } %> 
-</table> 
-<form align="center" action="OutdoorDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="OutdoorsDetail">
-		</h3>
-		</form>
-	<form align="center" action="stadiumDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="StadiumsDetail">
-		</h3>
-		</form>
-	<form align="center" action="ZhengxinDetails.jsp" method="post">
-		<h3>
-		<input type="submit" value="Zhengxin Buiding">
-		</h3>
-		</form>
-
-
-
-<br></br>
-<br></br><br></br><br></br>
-
-<form align="center" action="FrontPageUser.jsp" method="get">
-		Back to HomePage!
-		</tr><input type="submit" value="Back" />
-		</form>
-
-</body> 
-
-
-
-
-</body> 
 <% 
-  sqlRst.close(); 
-  //¹Ø±ÕÓï¾ä¶ÔÏó 
-sqlStmt.close (); //¹Ø±ÕÊı¾İ¿âÁ¬½Ó 
-sqlConn.close(); 
-%> 
+java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+java.util.Date currentTime = new java.util.Date();//å¾—åˆ°å½“å‰ç³»ç»Ÿæ—¶é—´
+String str_date1 = formatter.format(currentTime); //å°†æ—¥æœŸæ—¶é—´æ ¼å¼åŒ– 
+String str_date2 = currentTime.toString(); //å°†Dateå‹æ—¥æœŸæ—¶é—´è½¬æ¢æˆå­—ç¬¦ä¸²å½¢å¼ 
+%>
+<html>
+	<head>
+		<title>æˆ‘è¦å»å¥èº«</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+	
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
+				<!-- Header -->
+					<header id="header">
+						<h1>åœºé¦†é¢„çº¦</h1>
+						<p4>ç›®å‰å¼€æ”¾é¢„çº¦çš„åœºé¦†æœ‰:æ­£å¿ƒæ¥¼ç¾½æ¯›çƒåœº,ç½‘çƒåœº,å…¶ä½™åœºåœ°ä»…å¯æŸ¥çœ‹ä¿¡æ¯</p4>
+						<br>
+						<p4>å…¶ä½™åœºåœ°åŒ…æ‹¬:æ¸¸æ³³é¦†ï¼Œå®¤å¤–ç¯®çƒåœºï¼Œä½“è‚²é¦†ï¼Œæ­£å¿ƒå¥èº«æˆ¿</p4>
+						<p><script language=JavaScript>
+today=new Date();
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i] }
+var d=new initArray(
+"æ˜ŸæœŸæ—¥",
+"æ˜ŸæœŸä¸€",
+"æ˜ŸæœŸäºŒ",
+"æ˜ŸæœŸä¸‰",
+"æ˜ŸæœŸå››",
+"æ˜ŸæœŸäº”",
+"æ˜ŸæœŸå…­");
+document.write(
+"<font color=#333 style='font-size:15pt;font-family: å®‹ä½“'> ",
+today.getFullYear(),"å¹´",
+today.getMonth()+1,"æœˆ",
+today.getDate(),"æ—¥",
+d[today.getDay()+1],"</font>" ); 
+</script>
+</p>
+						<nav>
+							<ul>
+								<li><a href="test.jsp" class="fa fa-twitter"></a></li>
+								é¢„çº¦ç¾½æ¯›çƒåœº
+								<li><a href="TennisRs.jsp" class="fa fa-facebook"><span>ç®¡ç†å‘˜ç™»å½•</span></a></li>
+								é¢„çº¦ç½‘çƒåœº
+								<li><a href="fieldsDetail.jsp" class="fa fa-dribbble"><span>ç•™è¨€æ¿</span></a></li>
+								æŸ¥è¯¢å…¶ä»–åœºé¦†ä¿¡æ¯
+							</ul>
+						</nav>
+					</header>
 
-
-
-
-  
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; å¼€å‘è®¾è®¡ï¼šæœ±éª…ï¼Œæ±Ÿåº”æ–Œï¼Œå¼ æ–‡å‡</span>
+					</footer>
+				
+			</div>
+		</div>
+	</body>
+</html>

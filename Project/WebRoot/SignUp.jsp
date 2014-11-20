@@ -1,17 +1,31 @@
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %>
 <!DOCTYPE html>
 <html>
-<body background="images/1.jpg" width:100%; height:100%>
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<body background="images/1.jpg">
+
+<div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
+<img src="1.jpg" height="100%" width="100%">
+</div>
+
+</body>
+
+
+
+
+
+
+<br></br><br></br><br></br><br></br>
+  
+
   <form align="left" action="SignUpSubmit.jsp" method="post">
-		</br>LoginName:<input type="text" name="newName">
-		</br>password:<input type="text" name="newpassword">
-		</br>ID:<input type="text" name="newID">
-		</br>contact information:<input type="text" name="newcontact">
+		<div id="a"></br>登陆账号<input type="text" name="newName"></div>
+		<div id="b"></br>登陆密码<input type="text" name="newpassword"></div>
+		<div id="c"></br>联系方式<input type="text" name="newcontact"></div>
 	
 		
 		
-		<input type="submit" value="Submit" />
+		<div id="d"><input type="submit" value="提交" /></div>
 		</form>
-		Password must contain a combination of 6-12 letters and numb...
-		</body>>
+		
+		</body>
 </html>

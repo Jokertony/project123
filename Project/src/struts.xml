@@ -9,7 +9,7 @@
 		
 		<action name="adminlog" class="action.adminlog">
 			<result name="success">FrontPageAdmin.jsp</result>
-			<result name="failure">/LoginFailed.jsp</result>
+			<result name="failure">LoginFailed.jsp</result>
 		</action>
 		
 		

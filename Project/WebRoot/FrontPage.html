@@ -1,51 +1,75 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
- <body align="center" background="images/3.jpg" >
-		<h1 align="center">Hit Stadium</h1>	
-		<h3 align="left" >Login</h3>
+	<head>
+		<title>我要去健身</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-<table border="1">
-<tr>
-<td>
-<form  action="userlogin.jsp" method="get">
-		user
-		<input type="submit" value="user" />
-		</form>
-</td>
-</tr>
-<tr>
-<td>
-<form  action="adminlogin.jsp" method="get">
-		admin
-		<input type="submit" value="admin" />
-		</form>
-		</td>
-		</tr>
-		<tr>
-		<td>
-		<form action="ViewMessages.jsp" method="get">
-		View The Message Board��
-		<input type="submit" value="go" />
-		</form>
-		</td>
-		</tr>
-</table>
-<h3 align="left" >If you want to sign up ,please click the button </h3>
+				<!-- Header -->
+					<header id="header">
+						<h1>我要去健身</h1>
+						<p>请选择登录方式</p>
+						<p><script language=JavaScript>
+today=new Date();
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i] }
+var d=new initArray(
+"星期日",
+"星期一",
+"星期二",
+"星期三",
+"星期四",
+"星期五",
+"星期六");
+document.write(
+"<font color=#333 style='font-size:15pt;font-family: 宋体'> ",
+today.getFullYear(),"年",
+today.getMonth()+1,"月",
+today.getDate(),"日",
+d[today.getDay()+1],"</font>" ); 
+</script>
+</p>
+						<nav>
+							<ul>
+								<li><a href="userlogin.jsp" class="fa fa-twitter"><span>用户登录</span></a></li>
+								用户登陆
+								<li><a href="adminlogin.jsp" class="fa fa-facebook"><span>管理员登录</span></a></li>
+								管理员登录
+								<li><a href="MessageBoard.jsp" class="fa fa-dribbble"><span>留言板</span></a></li>
+								留言板
+								<li><a href="signup.jsp" class="fa fa-envelope-o"><span>注册新用户</span></a></li>
+								注册新用户
+							</ul>
+						</nav>
+					</header>
 
-
-
-
-
-
-
-<form align="left" action="SignUp.jsp" method="get">
-		<input type="submit" value="Sign up" />
-		</form>
-		
-		<iframe align="left" src="http://www.hit.edu.cn/campus/sportfacilities.htm" width="800" height="450"></iframe>
-
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; 开发设计：朱骅，江应斌，张文升</span>
+					</footer>
+				
+			</div>
+		</div>
 	</body>
-
-  
-  
 </html>

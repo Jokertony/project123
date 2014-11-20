@@ -1,34 +1,35 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
 <html> 
 
 <body bgcolor="AntiqueWhite"> 
-<p align="center"><u><font size="5" face="»ªÎÄĞÂÎº">Messages board!</font></u></p> 
+<p align="center"><u><font size="5" face="åæ–‡æ–°é­">ç•™è¨€æ¿</font></u></p> 
 <%! 
-String host="localhost"; //Êı¾İ¿âÖ÷»ú 
-String database="test"; //Êı¾İ¿âÃû 
-String user="zh"; //ÓÃ»§Ãû 
-String pass=""; //¿ÚÁî 
-%><% java.sql.Connection sqlConn; //Êı¾İ¿âÁ¬½Ó¶ÔÏó 
-java.sql.Statement sqlStmt; //Óï¾ä¶ÔÏó 
-java.sql.ResultSet sqlRst; //½á¹û¼¯¶ÔÏó 
-//µÇ¼ÇJDBCÇı¶¯¶ÔÏó 
+String host="localhost"; //æ•°æ®åº“ä¸»æœº 
+String database="test"; //æ•°æ®åº“å 
+String user="zh"; //ç”¨æˆ·å 
+String pass=""; //å£ä»¤ 
+%><% java.sql.Connection sqlConn; //æ•°æ®åº“è¿æ¥å¯¹è±¡ 
+java.sql.Statement sqlStmt; //è¯­å¥å¯¹è±¡ 
+java.sql.ResultSet sqlRst; //ç»“æœé›†å¯¹è±¡ 
+//ç™»è®°JDBCé©±åŠ¨å¯¹è±¡ 
 Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
-//Á¬½ÓÊı¾İ¿â 
+//è¿æ¥æ•°æ®åº“ 
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass); 
-//´´½¨Óï¾ä¶ÔÏó 
+//åˆ›å»ºè¯­å¥å¯¹è±¡ 
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-//Ö´ĞĞSqlÓï¾ä 
+//æ‰§è¡ŒSqlè¯­å¥ 
 
 
-String nName=request.getParameter("newName");
-String newpassword=request.getParameter("newTitle");
-String newID=request.getParameter("newMessages");
-String newContact=request.getParameter("newTime");
+String newID=request.getParameter("newName");
+String nName=request.getParameter("newMessages");
 
 
+byte b[]=nName.getBytes("utf8");
+nName=new String(b);
+byte c[]=newID.getBytes("utf8");
+newID=new String(c);
 
-
-String sqlQuery="INSERT INTO messages VALUES(\""+nName+"\",\""+newpassword+"\",\""+newID+"\",\""+newContact+"\")"; 
+String sqlQuery="INSERT INTO messages VALUES(\""+nName+"\",\""+newID+"\")"; 
 sqlStmt.executeUpdate (sqlQuery);
 String a="*";
 String sqlquery="select "+a+" from messages"; 
@@ -37,29 +38,24 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 %>
 
 
-<h4 align="center">Add success!</h>
+<h4 align="center">æ·»åŠ æˆåŠŸ</h>
 
-<form align="center" action="FrontPageUser.jsp" method="get">
-        Back!
-		</tr><input type="submit" value="Back" />
-		</form>
 
 <table align="center" border="1" width="50%" bordercolorlight="#CC99FF" cellpadding="2" bordercolordark="#FFFFFF" cellspacing="0"> 
 <tr> 
-  <td align="center">Messages</td> 
-  <td align="center">Username</td> 
-  <td align="center">Title</td> 
-  <td align="center">time</td> 
+  <td align="center">ç”¨æˆ·å</td> 
+  <td align="center">ä¿¡æ¯</td> 
+
 
 
 </tr> 
 
-<% while (sqlRst.next()) { //È¡µÃÏÂÒ»Ìõ¼ÇÂ¼ %> 
-<tr><!--ÏÔÊ¾¼ÇÂ¼--> 
+<% while (sqlRst.next()) { //å–å¾—ä¸‹ä¸€æ¡è®°å½• %> 
+<tr><!--æ˜¾ç¤ºè®°å½•--> 
   <td align="center"><%=sqlRst.getString("Messages")%></td> 
   <td align="center"><%=sqlRst.getString("Username")%></td> 
-  <td align="center"><%=sqlRst.getString("Title")%></td> 
-  <td align="center"><%=sqlRst.getString("time")%></td> 
+  
+ 
 </tr> 
 <% } %> 
 </table> 
@@ -67,6 +63,9 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 <br></br>
 <br></br><br></br><br></br>
 
+<form align="center" action="FrontPageUser.jsp" method="get">
+		</tr><input type="submit" value="è¿”å›é¦–é¡µ" />
+		</form>
 
 
 
@@ -75,6 +74,6 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 </body> 
 <% 
 
-sqlStmt.close (); //¹Ø±ÕÊı¾İ¿âÁ¬½Ó 
+sqlStmt.close (); //å…³é—­æ•°æ®åº“è¿æ¥ 
 sqlConn.close(); 
 %> 

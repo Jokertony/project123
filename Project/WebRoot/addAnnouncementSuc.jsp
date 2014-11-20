@@ -1,59 +1,54 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
 <html> 
 
 <body bgcolor="AntiqueWhite"> 
-<p align="center"><u><font size="5" face="»ªÎÄĞÂÎº">Messages board!</font></u></p> 
+<p align="center"><u><font size="5" face="åæ–‡æ–°é­">å…¬å‘Šæ </font></u></p> 
 <%! 
-String host="localhost"; //Êı¾İ¿âÖ÷»ú 
-String database="test"; //Êı¾İ¿âÃû 
-String user="zh"; //ÓÃ»§Ãû 
-String pass=""; //¿ÚÁî 
-%><% java.sql.Connection sqlConn; //Êı¾İ¿âÁ¬½Ó¶ÔÏó 
-java.sql.Statement sqlStmt; //Óï¾ä¶ÔÏó 
-java.sql.ResultSet sqlRst; //½á¹û¼¯¶ÔÏó 
-//µÇ¼ÇJDBCÇı¶¯¶ÔÏó 
+String host="localhost"; //æ•°æ®åº“ä¸»æœº 
+String database="test"; //æ•°æ®åº“å 
+String user="zh"; //ç”¨æˆ·å 
+String pass=""; //å£ä»¤ 
+%><% java.sql.Connection sqlConn; //æ•°æ®åº“è¿æ¥å¯¹è±¡ 
+java.sql.Statement sqlStmt; //è¯­å¥å¯¹è±¡ 
+java.sql.ResultSet sqlRst; //ç»“æœé›†å¯¹è±¡ 
+//ç™»è®°JDBCé©±åŠ¨å¯¹è±¡ 
 Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
-//Á¬½ÓÊı¾İ¿â 
+//è¿æ¥æ•°æ®åº“ 
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass); 
-//´´½¨Óï¾ä¶ÔÏó 
+//åˆ›å»ºè¯­å¥å¯¹è±¡ 
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-//Ö´ĞĞSqlÓï¾ä 
+//æ‰§è¡ŒSqlè¯­å¥ 
 
 
 String nName=request.getParameter("newTime");
 String newpassword=request.getParameter("newAnnoun");
-
-
-
-
-
+byte b[]=newpassword.getBytes("utf8");
+newpassword=new String(b);
 String sqlQuery="INSERT INTO announce VALUES(\""+nName+"\",\""+newpassword+"\")"; 
 sqlStmt.executeUpdate (sqlQuery);
-String a="*";
-String sqlquery="select "+a+" from announce"; 
+String sqlquery="select * from announce"; 
 sqlRst=sqlStmt.executeQuery (sqlquery);
 
 %>
 
 
-<h4 align="center">Add success!</h>
+<h4 align="center">æ·»åŠ å…¬å‘ŠæˆåŠŸ</h>
 
 <form align="center" action="FrontPageAdmin.jsp" method="get">
-        Back!
-		</tr><input type="submit" value="Back" />
+		</tr><input type="submit" value="å›åˆ°é¦–é¡µ" />
 		</form>
 
 <table align="center" border="1" width="50%" bordercolorlight="#CC99FF" cellpadding="2" bordercolordark="#FFFFFF" cellspacing="0"> 
 <tr> 
-  <td align="center">time</td> 
-  <td align="center">announce</td> 
+  <td align="center">æ—¶é—´</td> 
+  <td align="center">å…¬å‘Š</td> 
 
 
 
 </tr> 
 
-<% while (sqlRst.next()) { //È¡µÃÏÂÒ»Ìõ¼ÇÂ¼ %> 
-<tr><!--ÏÔÊ¾¼ÇÂ¼--> 
+<% while (sqlRst.next()) { //å–å¾—ä¸‹ä¸€æ¡è®°å½• %> 
+<tr><!--æ˜¾ç¤ºè®°å½•--> 
   <td align="center"><%=sqlRst.getString("Time")%></td> 
   <td align="center"><%=sqlRst.getString("announcement")%></td> 
 </tr> 
@@ -71,6 +66,6 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 </body> 
 <% 
 
-sqlStmt.close (); //¹Ø±ÕÊı¾İ¿âÁ¬½Ó 
+sqlStmt.close (); //å…³é—­æ•°æ®åº“è¿æ¥ 
 sqlConn.close(); 
 %> 
