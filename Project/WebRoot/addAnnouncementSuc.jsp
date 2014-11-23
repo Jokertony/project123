@@ -1,4 +1,4 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf-8" %> 
 <html> 
 
 <body bgcolor="AntiqueWhite"> 
@@ -19,11 +19,8 @@ sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
 //执行Sql语句 
 
-
 String nName=request.getParameter("newTime");
-String newpassword=request.getParameter("newAnnoun");
-byte b[]=newpassword.getBytes("utf8");
-newpassword=new String(b);
+String newpassword=new String(request.getParameter("newAnnoun").getBytes("ISO-8859-1"),"utf-8");
 String sqlQuery="INSERT INTO announce VALUES(\""+nName+"\",\""+newpassword+"\")"; 
 sqlStmt.executeUpdate (sqlQuery);
 String sqlquery="select * from announce"; 

@@ -1,9 +1,11 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
-<%@page import="javax.imageio.*"%>  
-<%@page import="java.awt.image.BufferedImage,java.io.*;"%>  <html> 
-
-<body background="222.jpg"> 
-<p align="center"><u><font size="5" face="»ªÎÄÐÂÎº">Çò¹ÝÐÅÏ¢</font></u></p> 
+<!DOCTYPE HTML>
+<!--
+	Aerial 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
+<html>
 <%! 
 String host="localhost"; 
 String database="test";  
@@ -15,47 +17,63 @@ java.sql.ResultSet sqlRst;
 Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass);
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-
-
 String sqlQuery="select * from fields where fieldname='tennis'"; 
 sqlRst=sqlStmt.executeQuery (sqlQuery);
 
 %>
+	<head>
+		<title>é¢„çº¦ç½‘çƒåœº</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-
-
-
-
-
-<% while (sqlRst.next()) { //È¡µÃÏÂÒ»Ìõ¼ÇÂ¼ %> 
-   <%=sqlRst.getString("details")%> 
-   <br>
-<% } %> 
-
-                                                 
-
-<div style="width:1000px">
-     <div  style=" float:left; width:40%;"><h4>ÍøÇò³¡Êµ¾°Í¼ </h4> <img src="13.jpg" height="300px" width="400px" ></div>
-     <div  style=" float:left; width:40%;"><h4>ÍøÇò³¡·Ö²¼Æ½ÃæÍ¼</h4><img src="1111.png"  height="300px" width="400px"></div>
-      <div  style=" float:right; width:20%;"><h4>Ô¤Ô¼ÏêÇé</h4>
-      <br><br><br>
-      <form name="badmintonTime" action="" method="post">
-      ÇëÊäÈëÔ¤Ô¼ÈÕÆÚ<br>
-      <select name="day">
-    <option value="1">ÖÜÒ»</option>
-    <option value="2">ÖÜ¶þ</option>
-    <option value="3"> ÖÜÈý</option>
-    <option value="4"> ÖÜËÄ</option>
-    <option value="5"> ÖÜÎå</option>
-    <option value="6"> ÖÜÁù</option>
-    <option value="7"> ÖÜÌì</option>
+				<!-- Header -->
+					<header id="header">
+						<h1>çƒåœºä¿¡æ¯</h1>
+						<p><% while (sqlRst.next()) { //å–å¾—ä¸‹ä¸€æ¡è®°å½• %> 
+						<%=sqlRst.getString("details")%> 
+						<br>
+<% } %> </p>
+						<nav>
+							<ul>
+							<center>
+								<div style="width:1000px">
+     <div  style=" float:left; width:40%;"><h4>ç½‘çƒåœºå®žæ™¯å›¾ </h4> <img src="13.jpg" height="300px" width="400px" ></div>
+     <div  style=" float:left; width:40%;"><h4>ç½‘çƒåœºåˆ†å¸ƒå¹³é¢å›¾</h4><img src="1111.png"  height="300px" width="400px"></div>
+      <div  style=" float:right; width:20%;">
+      <form name="badmintonTime" action="reserve" method="post">
+      è¯·è¾“å…¥é¢„çº¦æ—¥æœŸ<br>
+      <select align="left" name="week">
+    <option value="1">å‘¨ä¸€</option>
+    <option value="2">å‘¨äºŒ</option>
+    <option value="3"> å‘¨ä¸‰</option>
+    <option value="4"> å‘¨å››</option>
+    <option value="5"> å‘¨äº”</option>
+    <option value="6"> å‘¨å…­</option>
+    <option value="7"> å‘¨å¤©</option>
     </select>
     <br>
     
-     ÇëÊäÈëÔ¤Ô¼Ê±¼ä
+     è¯·è¾“å…¥é¢„çº¦æ—¶é—´
 
      <br>
-    <select name="time">
+    <select align="left" name="watch">
     <option value="8">8:00</option>
     <option value="9">9:00</option>
     <option value="10">10:00</option>
@@ -72,93 +90,38 @@ sqlRst=sqlStmt.executeQuery (sqlQuery);
     </select>
     <br>
     
-    ÇëÊäÈë³¡µØºÅ:
+    è¯·è¾“å…¥åœºåœ°å·:
       <br>
-     <select name="field">
-    <option value="101">1ºÅ³¡µØ</option>
-    <option value="102">2ºÅ³¡µØ</option>
+     <select align="left" name="field">
+    <option value="101">1å·åœºåœ°</option>
+    <option value="102">2å·åœºåœ°</option>
     </select>
     <br>
-      <input type="submit" value="Ìá½»Ô¤Ô¼">
+
+    è¯·è¾“å…¥é¢„çº¦è€…å§“å
+    <input type="text" name="LoginName" style="color:black;"  height="30px">
+    <br>
+    è¯·è¾“å…¥ç¡®è®¤é¢„çº¦çš„è”ç³»ç”µè¯
+    <br>
+    <input type="text" name="contact" style="color:black;" height="20px">
+    <br>
+    
+      <input type="submit" value="æäº¤é¢„çº¦" style="color:black;">
        </form>
       </div>
  </div>
+ </center>
 
-<br>
+							</ul>
+						</nav>
+					</header>
 
-
-
-<script>
-<!--   
-   function YYYYMMDDstart()   
-   {   
-           MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];   
-    
-           //ÏÈ¸øÄêÏÂÀ­¿ò¸³ÄÚÈÝ   
-           var y  = new Date().getFullYear();   
-           for (var i = (y-30); i < (y+30); i++) //ÒÔ½ñÄêÎª×¼£¬Ç°30Äê£¬ºó30Äê   
-                   document.reg_testdate.YYYY.options.add(new Option(" "+ i +" Äê", i));   
-    
-           //¸³ÔÂ·ÝµÄÏÂÀ­¿ò   
-           for (var i = 1; i < 13; i++)   
-                   document.reg_testdate.MM.options.add(new Option(" " + i + " ÔÂ", i));   
-    
-           document.reg_testdate.YYYY.value = y;   
-           document.reg_testdate.MM.value = new Date().getMonth() + 1;   
-           var n = MonHead[new Date().getMonth()];   
-           if (new Date().getMonth() ==1 && IsPinYear(YYYYvalue)) n++;   
-                writeDay(n); //¸³ÈÕÆÚÏÂÀ­¿òAuthor:meizz   
-           document.reg_testdate.DD.value = new Date().getDate();   
-   }   
-   if(document.attachEvent)   
-       window.attachEvent("onload", YYYYMMDDstart);   
-   else   
-       window.addEventListener('load', YYYYMMDDstart, false);   
-   function YYYYDD(str) //Äê·¢Éú±ä»¯Ê±ÈÕÆÚ·¢Éú±ä»¯(Ö÷ÒªÊÇÅÐ¶ÏÈòÆ½Äê)   
-   {   
-           var MMvalue = document.reg_testdate.MM.options[document.reg_testdate.MM.selectedIndex].value;   
-           if (MMvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
-           var n = MonHead[MMvalue - 1];   
-           if (MMvalue ==2 && IsPinYear(str)) n++;   
-                writeDay(n)   
-   }   
-   function MMDD(str)   //ÔÂ·¢Éú±ä»¯Ê±ÈÕÆÚÁª¶¯   
-   {   
-        var YYYYvalue = document.reg_testdate.YYYY.options[document.reg_testdate.YYYY.selectedIndex].value;   
-        if (YYYYvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
-        var n = MonHead[str - 1];   
-        if (str ==2 && IsPinYear(YYYYvalue)) n++;   
-       writeDay(n)   
-   }   
-   function writeDay(n)   //¾ÝÌõ¼þÐ´ÈÕÆÚµÄÏÂÀ­¿ò   
-   {   
-           var e = document.reg_testdate.DD; optionsClear(e);   
-           for (var i=1; i<(n+1); i++)   
-                e.options.add(new Option(" "+ i + " ÈÕ", i));   
-   }   
-   function IsPinYear(year)//ÅÐ¶ÏÊÇ·ñÈòÆ½Äê   
-   {     return(0 == year%4 && (year%100 !=0 || year%400 == 0));}   
-   function optionsClear(e)   
-   {   
-        e.options.length = 1;   
-   }   
-   //--></script>
-
-
-</body> 
-
-       
-<% 
-  sqlRst.close(); 
-  //¹Ø±ÕÓï¾ä¶ÔÏó 
-sqlStmt.close (); //¹Ø±ÕÊý¾Ý¿âÁ¬½Ó 
-sqlConn.close(); 
-%> 
-
-
-
-
-
-
-
-  
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; å¼€å‘è®¾è®¡ï¼šæœ±éª…ï¼Œæ±Ÿåº”æ–Œï¼Œå¼ æ–‡å‡</span>
+					</footer>
+				
+			</div>
+		</div>
+	</body>
+</html>

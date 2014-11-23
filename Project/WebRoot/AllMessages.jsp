@@ -7,7 +7,18 @@ String str_date1 = formatter.format(currentTime); //将日期时间格式化
 String str_date2 = currentTime.toString(); //将Date型日期时间转换成字符串形式 
 %>
 <html>
+
 	<head>
+	<style>
+.div_show
+{
+   display:block;
+}
+.div_hide
+{
+   display:none;
+}
+</style>
 		<title>我要去健身</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
@@ -61,12 +72,21 @@ d[today.getDay()+1],"</font>" );
 </p>
 						<nav>
 							<ul>
-								<li><a href="test.jsp" class="fa fa-twitter"></a></li>
+								<li><a href="ZxbadmintonRs.jsp" class="fa fa-twitter"></a></li>
 								预约羽毛球场
 								<li><a href="TennisRs.jsp" class="fa fa-facebook"><span>管理员登录</span></a></li>
 								预约网球场
 								<li><a href="fieldsDetail.jsp" class="fa fa-dribbble"><span>留言板</span></a></li>
 								查询其他场馆信息
+								<li><a href="javaScript:showhi()" class="fa fa-envelope-o"><span>查询已预订信息</span></a></li>
+								<a href="javaScript:showhi()">查询已预约信息</a>
+<div id="tex" class="div_hide">
+    <form action="SearchName.jsp" style="color:black;">
+    您的预约姓名<input type="text" name="newName" style="color:black;"><br>
+    <input type="submit" value="查询"  style="color:black;" >
+    </form>
+</div>
+								
 							</ul>
 						</nav>
 					</header>
@@ -78,5 +98,11 @@ d[today.getDay()+1],"</font>" );
 				
 			</div>
 		</div>
+		<script language="javaScript">
+function showhi()
+{
+  document.getElementById("tex").className="div_show";
+}
+</script>
 	</body>
 </html>

@@ -3,16 +3,37 @@
 <struts>
 	<package extends="struts-default" name="default" namespace="/">
 		<action name="signin" class="action.signin">
-			<result name="success">FrontPageUser.jsp</result>
-			<result name="failure">LoginFailed.jsp</result>
+			<result name="success">/FrontPageUser.jsp</result>
+			<result name="failure">/LoginFailed.jsp</result>
 		</action>
 		
 		<action name="adminlog" class="action.adminlog">
-			<result name="success">FrontPageAdmin.jsp</result>
-			<result name="failure">LoginFailed.jsp</result>
+			<result name="success">/FrontPageAdmin.jsp</result>
+			<result name="failure">/LoginFailed.jsp</result>
+		</action>
+		
+		<action name="initialise" class="action.initialise">
+			<result name="success">/FrontPageAdmin.jsp</result>
+		</action>
+		
+		<action name="update" class="action.update">
+			<result name="success">/FrontPageAdmin.jsp</result>
+		</action>
+		
+		<action name="reserve" class="action.reserve">
+			<result name="success">/RSsuccess.jsp</result>
+			<result name="failure">/RSfailure.jsp</result>
+		</action>
+		
+		<action name="delete" class="action.delete">
+			<result name="success">/AllMessages.jsp</result>
+		</action>
+		
+		<action name="admindelete" class="action.admindelete">
+			<result name="success">/FrontPageAdmin.jsp</result>
 		</action>
 		
 		
 	</package>
 
-</struts>    
+</struts>   

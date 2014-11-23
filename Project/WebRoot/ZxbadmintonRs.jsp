@@ -1,9 +1,11 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
-<%@page import="javax.imageio.*"%>  
-<%@page import="java.awt.image.BufferedImage,java.io.*;"%>  <html> 
-
-<body background="222.jpg"> 
-<p align="center"><u><font size="5" face="»ªÎÄÐÂÎº">Çò¹ÝÐÅÏ¢</font></u></p> 
+<!DOCTYPE HTML>
+<!--
+	Aerial 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
+<html>
 <%! 
 String host="localhost"; 
 String database="test";  
@@ -21,43 +23,60 @@ String sqlQuery="select * from fields where fieldname='Zxbadminton'";
 sqlRst=sqlStmt.executeQuery (sqlQuery);
 
 %>
+	<head>
+		<title>Aerial by HTML5 UP</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-
-
-
-
-
-<% while (sqlRst.next()) { //È¡µÃÏÂÒ»Ìõ¼ÇÂ¼ %> 
-   <%=sqlRst.getString("details")%> 
-   <br>
-<% } %> 
-
-                                                 
-
-
-<div style="width:1000px">
-     <div  style=" float:left; width:40%;"><h4>ÓðÃ«Çò¹ÝÊµ¾°Í¼ </h4> <img src="18.jpg" height="300px" width="400px" ></div>
-     <div  style=" float:left; width:40%;"><h4>ÓðÃ«Çò¹Ý·Ö²¼Æ½ÃæÍ¼</h4><img src="Image001.jpg"  height="300px" width="400px"></div>
-      <div  style=" float:right; width:20%;"><h4>Ô¤Ô¼ÏêÇé</h4>
-      <br><br><br>
-      <form name="badmintonTime" action="test.jsp" method="post">
+				<!-- Header -->
+					<header id="header">
+						<h1>çƒåœºä¿¡æ¯</h1>
+						<p><% while (sqlRst.next()) { //å–å¾—ä¸‹ä¸€æ¡è®°å½• %> 
+						<%=sqlRst.getString("details")%> 
+						<br>
+<% } %> </p>
+						<nav>
+							<ul>
+							<center>
+								<div style="width:1000px">
+     <div  style=" float:left; width:40%;"><h4>ç¾½æ¯›çƒé¦†å®žæ™¯å›¾ </h4> <img src="18.jpg" height="300px" width="400px" ></div>
+     <div  style=" float:left; width:40%;"><h4>ç¾½æ¯›çƒé¦†åˆ†å¸ƒå¹³é¢å›¾</h4><img src="Image001.jpg"  height="300px" width="400px"></div>
+      <div  style=" float:right; width:20%;">
+      <form name="badmintonTime" action="reserve" method="post">
       
-      ÇëÊäÈëÔ¤Ô¼ÈÕÆÚ<br>
-      <select name="day">
-    <option value="1">ÖÜÒ»</option>
-    <option value="2">ÖÜ¶þ</option>
-    <option value="3"> ÖÜÈý</option>
-    <option value="4"> ÖÜËÄ</option>
-    <option value="5"> ÖÜÎå</option>
-    <option value="6"> ÖÜÁù</option>
-    <option value="7"> ÖÜÌì</option>
+      è¯·è¾“å…¥é¢„çº¦æ—¥æœŸ<br>
+      <select name="week">
+    <option value="1">å‘¨ä¸€</option>
+    <option value="2">å‘¨äºŒ</option>
+    <option value="3"> å‘¨ä¸‰</option>
+    <option value="4"> å‘¨å››</option>
+    <option value="5"> å‘¨äº”</option>
+    <option value="6"> å‘¨å…­</option>
+    <option value="7"> å‘¨å¤©</option>
     </select>
     <br>
     
-     ÇëÊäÈëÔ¤Ô¼Ê±¼ä
+     è¯·è¾“å…¥é¢„çº¦æ—¶é—´
 
      <br>
-    <select name="time">
+    <select name="watch">
     <option value="8">8:00</option>
     <option value="9">9:00</option>
     <option value="10">10:00</option>
@@ -73,111 +92,50 @@ sqlRst=sqlStmt.executeQuery (sqlQuery);
     <option value="20">20:00</option>
     </select>
     <br>
-    ÇëÊäÈë³¡µØºÅ:
+    è¯·è¾“å…¥åœºåœ°å·:
       <br>
      <select name="field">
-    <option value="1">1ºÅ³¡µØ</option>
-    <option value="2">2ºÅ³¡µØ</option>
-    <option value="3">3ºÅ³¡µØ</option>
-    <option value="4">4ºÅ³¡µØ</option>
-    <option value="5">5ºÅ³¡µØ</option>
-    <option value="6">6ºÅ³¡µØ</option>
-    <option value="7">7ºÅ³¡µØ</option>
-    <option value="8">8ºÅ³¡µØ</option>
-    <option value="9">9ºÅ³¡µØ</option>
-    <option value="10">10ºÅ³¡µØ</option>
-    <option value="11">11ºÅ³¡µØ</option>
-    <option value="12">12ºÅ³¡µØ</option>
+    <option value="1">1å·åœºåœ°</option>
+    <option value="2">2å·åœºåœ°</option>
+    <option value="3">3å·åœºåœ°</option>
+    <option value="4">4å·åœºåœ°</option>
+    <option value="5">5å·åœºåœ°</option>
+    <option value="6">6å·åœºåœ°</option>
+    <option value="7">7å·åœºåœ°</option>
+    <option value="8">8å·åœºåœ°</option>
+    <option value="9">9å·åœºåœ°</option>
+    <option value="10">10å·åœºåœ°</option>
+    <option value="11">11å·åœºåœ°</option>
+    <option value="12">12å·åœºåœ°</option>
     </select>
     
     
     <br>
-
-    
+    è¯·è¾“å…¥é¢„çº¦è€…å§“å
+    <input type="text" name="LoginName" style="color:black;"  height="30px">
+    <br>
+    è¯·è¾“å…¥ç¡®è®¤é¢„çº¦çš„è”ç³»ç”µè¯
+    <br>
+    <input type="text" name="contact" style="color:black;" height="20px">
+    <br>
       
       
-      <input type="submit" value="Ìá½»Ô¤Ô¼">
+      <input type="submit" value="æäº¤é¢„çº¦" style="color:black;">
       </form>
       </div>
  </div>
+ </center>
 
+							</ul>
+						</nav>
+					</header>
 
-
-<br>
-
-
-
-<script language="JavaScript"><!--   
-   function YYYYMMDDstart()   
-   {   
-           MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];   
-    
-           //ÏÈ¸øÄêÏÂÀ­¿ò¸³ÄÚÈÝ   
-           var y  = new Date().getFullYear();   
-           for (var i = (y-30); i < (y+30); i++) //ÒÔ½ñÄêÎª×¼£¬Ç°30Äê£¬ºó30Äê   
-                   document.reg_testdate.YYYY.options.add(new Option(" "+ i +" Äê", i));   
-    
-           //¸³ÔÂ·ÝµÄÏÂÀ­¿ò   
-           for (var i = 1; i < 13; i++)   
-                   document.reg_testdate.MM.options.add(new Option(" " + i + " ÔÂ", i));   
-    
-           document.reg_testdate.YYYY.value = y;   
-           document.reg_testdate.MM.value = new Date().getMonth() + 1;   
-           var n = MonHead[new Date().getMonth()];   
-           if (new Date().getMonth() ==1 && IsPinYear(YYYYvalue)) n++;   
-                writeDay(n); //¸³ÈÕÆÚÏÂÀ­¿òAuthor:meizz   
-           document.reg_testdate.DD.value = new Date().getDate();   
-   }   
-   if(document.attachEvent)   
-       window.attachEvent("onload", YYYYMMDDstart);   
-   else   
-       window.addEventListener('load', YYYYMMDDstart, false);   
-       
-   function YYYYDD(str) //Äê·¢Éú±ä»¯Ê±ÈÕÆÚ·¢Éú±ä»¯(Ö÷ÒªÊÇÅÐ¶ÏÈòÆ½Äê)   
-   {   
-           var MMvalue = document.reg_testdate.MM.options[document.reg_testdate.MM.selectedIndex].value;   
-           if (MMvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
-           var n = MonHead[MMvalue - 1];   
-           if (MMvalue ==2 && IsPinYear(str)) n++;   
-                writeDay(n)   
-   }   
-   function MMDD(str)   //ÔÂ·¢Éú±ä»¯Ê±ÈÕÆÚÁª¶¯   
-   {   
-        var YYYYvalue = document.reg_testdate.YYYY.options[document.reg_testdate.YYYY.selectedIndex].value;   
-        if (YYYYvalue == ""){ var e = document.reg_testdate.DD; optionsClear(e); return;}   
-        var n = MonHead[str - 1];   
-        if (str ==2 && IsPinYear(YYYYvalue)) n++;   
-       writeDay(n)   
-   }   
-   function writeDay(n)   //¾ÝÌõ¼þÐ´ÈÕÆÚµÄÏÂÀ­¿ò   
-   {   
-           var e = document.reg_testdate.DD; optionsClear(e);   
-           for (var i=1; i<(n+1); i++)   
-                e.options.add(new Option(" "+ i + " ÈÕ", i));   
-   }   
-   function IsPinYear(year)//ÅÐ¶ÏÊÇ·ñÈòÆ½Äê   
-   {     return(0 == year%4 && (year%100 !=0 || year%400 == 0));}   
-   function optionsClear(e)   
-   {   
-        e.options.length = 1;   
-   }   
-   //--></script>
-
-
-</body> 
-
-       
-<% 
-  sqlRst.close(); 
-  //¹Ø±ÕÓï¾ä¶ÔÏó 
-sqlStmt.close (); //¹Ø±ÕÊý¾Ý¿âÁ¬½Ó 
-sqlConn.close(); 
-%> 
-
-
-
-
-
-
-
-  
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; å¼€å‘è®¾è®¡ï¼šæœ±éª…ï¼Œæ±Ÿåº”æ–Œï¼Œå¼ æ–‡å‡</span>
+					</footer>
+				
+			</div>
+		</div>
+	</body>
+</html>

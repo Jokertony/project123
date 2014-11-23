@@ -19,20 +19,11 @@ sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
 //执行Sql语句 
 
-
-String newID=request.getParameter("newName");
-String nName=request.getParameter("newMessages");
-
-
-byte b[]=nName.getBytes("utf8");
-nName=new String(b);
-byte c[]=newID.getBytes("utf8");
-newID=new String(c);
-
+String newID=new String(request.getParameter("newName").getBytes("ISO-8859-1"),"utf8");
+String nName=new String(request.getParameter("newMessages").getBytes("ISO-8859-1"),"utf8");
 String sqlQuery="INSERT INTO messages VALUES(\""+nName+"\",\""+newID+"\")"; 
 sqlStmt.executeUpdate (sqlQuery);
-String a="*";
-String sqlquery="select "+a+" from messages"; 
+String sqlquery="select * from messages"; 
 sqlRst=sqlStmt.executeQuery (sqlquery);
 
 %>
@@ -52,8 +43,9 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 
 <% while (sqlRst.next()) { //取得下一条记录 %> 
 <tr><!--显示记录--> 
-  <td align="center"><%=sqlRst.getString("Messages")%></td> 
   <td align="center"><%=sqlRst.getString("Username")%></td> 
+  <td align="center"><%=sqlRst.getString("Messages")%></td> 
+
   
  
 </tr> 

@@ -1,8 +1,6 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
-<html> 
 
-<body background="333.jpg"> 
-<p align="center"><u><font size="5" face="华文新魏">公告栏</font></u></p> 
+
+<!DOCTYPE HTML>
 <%! 
 String host="localhost"; 
 String database="test"; 
@@ -13,17 +11,14 @@ java.sql.Statement sqlStmt;
 java.sql.ResultSet sqlRst; 
 Class.forName ("com.mysql.jdbc.Driver").newInstance (); 
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass);  
-sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY);
+sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
 
-String sqlquery="select * from sport where status=0"; 
+
+String a=(String)session.getAttribute("fuck");
+String sqlquery="select * from sport where id ='"+a+"'";
 sqlRst=sqlStmt.executeQuery (sqlquery);
 
 %>
-
-
-
-<!DOCTYPE HTML>
-
 <!--
 	Aerial 1.0 by HTML5 UP
 	html5up.net | @n33co
@@ -31,7 +26,7 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 -->
 <html>
 	<head>
-		<title>管理预约情况</title>
+		<title>Aerial by HTML5 UP</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -55,40 +50,14 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 
 				<!-- Header -->
 					<header id="header">
-						<h1>以下是所有预约信息</h1>
-						 <form action="delete" style="color:black;">
-						 请输入你要删除的场地编号<br> <input style="color:black; size=14" type="text" name="id" ><br>
-								 <input type="submit" value="删除预约"  style="color:black;" >
-								 </form>
+						<h1>预约成功！</h1>
+						<p>所有预约详情可在首页中查看</p>
 						
 							
 							
 							
 								
-								 <center>
-								 <table  border="1" width="50%" bordercolorlight="#CC99FF" cellpadding="2" bordercolordark="#FFFFFF" cellspacing="0"> 
-							<tr> 
-							<td align="center">编号</td> 
-							<td align="center">时间</td> 
-							<td align="center">status</td>
-							<td align="center">星期</td>
-							<td align="center">LoginName</td>
-							<td align="center">contact</td>  
-							<td align="center">field</td>    
-							</tr> 
-							<% while (sqlRst.next()) { //取得下一条记录 %> 
-							<tr><!--显示记录--> 
-							<td align="center"><%=sqlRst.getString("id")%></td> 
-							 <td align="center"><%=sqlRst.getString("watch")%>:00</td> 
-							 <td align="center"><%=sqlRst.getString("status")%></td> 
-							  <td align="center"><%=sqlRst.getString("week")%></td> 
-							   <td align="center"><%=sqlRst.getString("LoginName")%></td> 
-							    <td align="center"><%=sqlRst.getString("contact")%></td> 
-							     <td align="center"><%=sqlRst.getString("field")%></td> 
-							   </tr> 
-							   <% } %> 
-							   </table> 
-							   </center>
+								
 								 <form action="AllMessages.jsp" style="color:black;">
 								 <input type="submit" value="回到首页"  style="color:black;" >
 								 </form>
@@ -106,17 +75,8 @@ sqlRst=sqlStmt.executeQuery (sqlquery);
 		
 	</body>
 </html>
-
-
-
-
-
-</body> 
 <% 
 
 sqlStmt.close (); //关闭数据库连接 
 sqlConn.close(); 
 %> 
-
-
-

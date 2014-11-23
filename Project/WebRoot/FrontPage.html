@@ -2,6 +2,16 @@
 
 <html>
 	<head>
+			<style>
+.div_show
+{
+   display:block;
+}
+.div_hide
+{
+   display:none;
+}
+</style>
 		<title>我要去健身</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
@@ -52,14 +62,38 @@ d[today.getDay()+1],"</font>" );
 </p>
 						<nav>
 							<ul>
-								<li><a href="userlogin.jsp" class="fa fa-twitter"><span>用户登录</span></a></li>
-								用户登陆
-								<li><a href="adminlogin.jsp" class="fa fa-facebook"><span>管理员登录</span></a></li>
-								管理员登录
-								<li><a href="MessageBoard.jsp" class="fa fa-dribbble"><span>留言板</span></a></li>
-								留言板
-								<li><a href="signup.jsp" class="fa fa-envelope-o"><span>注册新用户</span></a></li>
-								注册新用户
+								<li><a href="javaScript:showHideText()" class="fa fa-twitter"><span>用户登录</span></a></li>
+								<a href="javaScript:showHideText()">用户登录</a>
+<div id="div_text" class="div_hide">
+    <form action=signin style="color:black;">
+    登陆用户<input type="text" name="username" style="color:black;"><br>
+    登陆密码<input type="password" name="password" style="color:black;"><br>
+    <input type="submit" value="登陆"  style="color:black;" >
+    </form>
+</div>
+
+								<li><a href="javaScript:showhide()" class="fa fa-facebook"><span>管理员登录</span></a></li>
+								<a href="javaScript:showhide()">管理员登录</a>
+<div id="div_tex" class="div_hide">
+    <form action=adminlog style="color:black;">
+    管理员账号<input type="text" name="username" style="color:black;"><br>
+    管理员密码<input type="password" name="password" style="color:black;"><br>
+    <input type="submit" value="登陆"  style="color:black;" >
+    </form>
+</div>
+
+
+
+								<li><a href="javaScript:showhi()" class="fa fa-dribbble"><span>注册</span></a></li>
+								<a href="javaScript:showhi()">注册</a>
+<div id="tex" class="div_hide">
+    <form action="SignUpSubmit.jsp" style="color:black;">
+    登陆账号<input type="text" name="newName" style="color:black;"><br>
+    登陆密码<input type="text" name="newpassword" style="color:black;"><br>
+    联系方式<input type="text" name="newcontact" style="color:black;"><br>
+    <input type="submit" value="提交"  style="color:black;" >
+    </form>
+</div>
 							</ul>
 						</nav>
 					</header>
@@ -71,5 +105,34 @@ d[today.getDay()+1],"</font>" );
 				
 			</div>
 		</div>
+		
+		
+		
+		
+
+<script language="javaScript">
+function showHideText()
+{
+  document.getElementById("div_text").className="div_show";
+}
+</script>
+
+<script language="javaScript">
+function showhide()
+{
+  document.getElementById("div_tex").className="div_show";
+}
+</script>
+
+<script language="javaScript">
+function showhi()
+{
+  document.getElementById("tex").className="div_show";
+}
+</script>
+		
+		
+		
+		
 	</body>
 </html>

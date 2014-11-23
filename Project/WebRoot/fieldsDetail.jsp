@@ -1,9 +1,11 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
-<%@page import="javax.imageio.*"%>  
-<%@page import="java.awt.image.BufferedImage,java.io.*;"%>  <html> 
-
-<body background="333.jpg"> 
-<p align="center"><u><font size="5" face="╩╙ндпбн╨">гР╧щпео╒</font></u></p> 
+<!DOCTYPE HTML>
+<!--
+	Aerial 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=utf8" %> 
+<html>
 <%! 
 String host="localhost"; 
 String database="test";  
@@ -19,55 +21,60 @@ sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java
 String sqlQuery="select * from fields where fieldname='OutBasketball' or fieldname='swim' or fieldname='gym' or fieldname='Zxsportfield' or fieldname='tabletennis' or fieldname='volleyball'"; 
 sqlRst=sqlStmt.executeQuery (sqlQuery);
 %>
+	<head>
+		<title>Е┘╤Д╫≥Е°╨И╕├Д©║Ф│╞</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-
-
-
-<% while (sqlRst.next()) { //х║╣цобр╩лУ╪гб╪ %> 
-
-   <%=sqlRst.getString("details")%> 
-   <br>
-   
-<% } %> 
-
-
-
-
-<div style="width:1000px">
-     <div  style=" float:left; width:40%;"><h4>Ё║╣ьй╣╬╟</h4><img src="17.jpg" height="200px" width="400px" ></div>
-     <div  style=" float:left; width:40%;"><h4>ю╨гРЁ║</h4><img src="19.jpg"  height="200px" width="400px"></div>
-      <div  style=" float:right; width:20%;">
-      <br><br><br>
-      <form align="center" action="FrontPageUser.jsp" method="get">
-		<input type="submit" value="╩ь╣╫йврЁ!" />
-		</form>
-      </div>
+				<!-- Header -->
+					<header id="header">
+						<h1>Г░┐Е°╨Д©║Ф│╞</h1>
+						<p><% while (sqlRst.next()) { //Е▐√Е╬≈Д╦▀Д╦─Ф²║Х╝╟Е╫∙ %> 
+						<%=sqlRst.getString("details")%> 
+						<br>
+<% } %> </p>
+						<nav>
+							<ul>
+							<center>
+								<div style="width:1000px">
+     <div  style=" float:left; width:50%;"><h4>Е°╨Е°╟Е╝·Ф≥╞</h4><img src="17.jpg" height="200px" width="400px" ></div>
+     <div  style=" float:left; width:50%;"><h4>Г╞╝Г░┐Е°╨</h4><img src="19.jpg"  height="200px" width="400px"></div>
+ 
  </div>
  
  <div style="width:1000px">
-     <div  style=" float:left; width:40%;"><h4>Ё║╣ьй╣╬╟</h4><img src="15.jpg" height="200px" width="400px" ></div>
-     <div  style=" float:left; width:40%;"><h4>еегРЁ║</h4><img src="20.jpg"  height="200px" width="400px"></div>
-      
+     <div  style=" float:left; width:50%;"><h4>Е°╨Е°╟Е╝·Ф≥╞</h4><img src="15.jpg" height="200px" width="400px" ></div>
+     <div  style=" float:left; width:50%;"><h4>Ф▌▓Г░┐Е°╨</h4><img src="20.jpg"  height="200px" width="400px"></div>
  </div>
+ </center>
 
+							</ul>
+						</nav>
+					</header>
 
- 
- 
- 
-
-
-
-
-</body> 
-<% 
-  sqlRst.close(); 
-  //╧ь╠усО╬Д╤тоС 
-sqlStmt.close (); //╧ь╠уйЩ╬щ©Ба╛╫с 
-sqlConn.close(); 
-%> 
-
-
-
-
-
-  
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; Е╪─Е▐▒Х╝╬Х╝║О╪ Ф°╠И╙┘О╪▄Ф╠÷Е╨■Ф√▄О╪▄Е╪═Ф√┤Е█┤</span>
+					</footer>
+				
+			</div>
+		</div>
+	</body>
+</html>

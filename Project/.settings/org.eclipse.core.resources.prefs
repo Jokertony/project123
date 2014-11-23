@@ -1,8 +1,10 @@
-#Thu Nov 20 09:58:48 CST 2014
+#Fri Nov 21 23:36:36 CST 2014
 eclipse.preferences.version=1
+encoding//WebRoot/AllMessages(admin).jsp=UTF-8
 encoding//WebRoot/AllMessages.jsp=UTF-8
 encoding//WebRoot/FrontPageAdmin.jsp=UTF-8
 encoding//WebRoot/FrontPageUser.jsp=UTF-8
 encoding//WebRoot/Map.jsp=UTF-8
-encoding//WebRoot/addAnoucement.jsp=UTF-8
-encoding//WebRoot/addmessages.jsp=UTF-8
+encoding//WebRoot/RSsuccess.jsp=UTF-8
+encoding//WebRoot/SearchName.jsp=UTF-8
+encoding//WebRoot/test.jsp=UTF-8

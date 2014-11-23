@@ -1,92 +1,104 @@
-<%@page import="java.sql.*" import ="java.util.*" import ="java.io.*" contentType="text/html; charset=gb2312" %> 
-<html> 
-
-<br></br>
-<br></br><br></br><br></br>
-<body background="3.jpg"> 
-<p align="center" >Ìá¹©Ô¤Ô¼µÄ³¡Ëù£º
-
-
-
+<!DOCTYPE HTML>
 
 <% 
 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-java.util.Date currentTime = new java.util.Date();//µÃµ½µ±Ç°ÏµÍ³Ê±¼ä
-String str_date1 = formatter.format(currentTime); //½«ÈÕÆÚÊ±¼ä¸ñÊ½»¯ 
-String str_date2 = currentTime.toString(); //½«DateĞÍÈÕÆÚÊ±¼ä×ª»»³É×Ö·û´®ĞÎÊ½ 
+java.util.Date currentTime = new java.util.Date();//å¾—åˆ°å½“å‰ç³»ç»Ÿæ—¶é—´
+String str_date1 = formatter.format(currentTime); //å°†æ—¥æœŸæ—¶é—´æ ¼å¼åŒ– 
+String str_date2 = currentTime.toString(); //å°†Dateå‹æ—¥æœŸæ—¶é—´è½¬æ¢æˆå­—ç¬¦ä¸²å½¢å¼ 
 %>
+<html>
 
+	<head>
+	<style>
+.div_show
+{
+   display:block;
+}
+.div_hide
+{
+   display:none;
+}
+</style>
+		<title>æˆ‘è¦å»å¥èº«</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="loading">
+	
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
+				<!-- Header -->
+					<header id="header">
+						<h1>åœºé¦†é¢„çº¦æƒ…å†µ</h1>
 
-<script language=JavaScript>
+						<p><script language=JavaScript>
 today=new Date();
-var judge;
 function initArray(){
 this.length=initArray.arguments.length
 for(var i=0;i<this.length;i++)
 this[i+1]=initArray.arguments[i] }
 var d=new initArray(
-"ĞÇÆÚÈÕ",
-"ĞÇÆÚÒ»",
-"ĞÇÆÚ¶ş",
-"ĞÇÆÚÈı",
-"ĞÇÆÚËÄ",
-"ĞÇÆÚÎå",
-"ĞÇÆÚÁù");
+"æ˜ŸæœŸæ—¥",
+"æ˜ŸæœŸä¸€",
+"æ˜ŸæœŸäºŒ",
+"æ˜ŸæœŸä¸‰",
+"æ˜ŸæœŸå››",
+"æ˜ŸæœŸäº”",
+"æ˜ŸæœŸå…­");
 document.write(
-"<font color=#333 style='font-size:10pt;font-family: ËÎÌå'> ",
-today.getFullYear(),"Äê",
-today.getMonth()+1,"ÔÂ",
-today.getDate(),"ÈÕ",
-d[today.getDay()+1],
-"</font>" ); 
+"<font color=#333 style='font-size:15pt;font-family: å®‹ä½“'> ",
+today.getFullYear(),"å¹´",
+today.getMonth()+1,"æœˆ",
+today.getDate(),"æ—¥",
+d[today.getDay()+1],"</font>" ); 
 </script>
-
-
-<form align= "center" action="ShowAllRs.jsp" method="post">
-ÕıĞÄÓğÃ«Çò³¡
-<br></br>
-ÊÒÍâÍøÇò³¡
-<br></br>
-<input type="submit"  value="²é¿´Ô¤Ô¼Çé¿ö" />
-</form>
-<br>
-<form align="center" action="" >
-³õÊ¼»¯Ô¤Ô¼Çé¿ö£¨Çë½÷É÷µã»÷£©
-<br>
-<input type="submit" value="³õÊ¼»¯">
-</form>
-
-
-
-<form align="center" name="insertForm" method="post" action="test.jsp"> 
-¸üĞÂÔ¤Ô¼Çé¿ö
+</p>
+						<nav>
+							<ul>
+								<li><a href="ShowAllRs.jsp" class="fa fa-twitter"></a></li>
+								æŸ¥çœ‹æ‰€æœ‰é¢„çº¦æƒ…å†µ
+								<li><a href="initialise" class="fa fa-facebook"><span></span></a></li>
+								åˆå§‹åŒ–é¢„çº¦æƒ…å†µ
+								<li><a href="" class="fa fa-dribbble"><span></span></a></li>
+								æ›´æ–°é¢„çº¦æƒ…å†µï¼ˆç‚¹å‡»ä¸‹æ–¹æ›´æ–°æŒ‰é’®ï¼‰
+								<form align="center" name="insertForm" method="post" action="update"> 
 <input type="hidden" name="day" value="<%=currentTime.getDay()%>"> 
-<br>
-<input type="submit" value="¸üĞÂ" > 
+<input type="submit" value="æ›´æ–°" style="color:black;" > 
 </form> 
 
 
+								
+							</ul>
+						</nav>
+					</header>
 
-
-
-
-
-<form align="center" action="FrontPageAdmin.jsp" method="get">
-		
-		</tr><input type="submit" value="»Øµ½Ê×Ò³!" />
-		</form>
-
-</body> 
-
-
-
-
-</body> 
-
-
-
-
-
-
-  
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; å¼€å‘è®¾è®¡ï¼šæœ±éª…ï¼Œæ±Ÿåº”æ–Œï¼Œå¼ æ–‡å‡</span>
+					</footer>
+				
+			</div>
+		</div>
+		<script language="javaScript">
+function showhi()
+{
+  document.getElementById("tex").className="div_show";
+}
+</script>
+	</body>
+</html>

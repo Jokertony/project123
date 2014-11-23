@@ -2,6 +2,16 @@
 <html> 
 
 <body background="222.jpg"> 
+<style>
+.div_show
+{
+   display:block;
+}
+.div_hide
+{
+   display:none;
+}
+</style>
 <p align="center"><u><font size="5" face="华文新魏">留言板</font></u></p> 
 <%! 
 String host="localhost"; //数据库主机 
@@ -43,17 +53,39 @@ sqlRst=sqlStmt.executeQuery (sqlQuery);
 <% } %> 
 </table> 
 
-<form align="center" action="addmessages.jsp" method="get">
+
+
+		
+<form align="center" action="javaScript:showhide()" method="get">
 		
 		<input type="submit" value="新增留言" />	
 		</form>
+		<br><br>
+<div id="div_tex" class="div_hide">
+<center>
+   <form align="left" action="AddSuccess.jsp" method="post">
+		</br>用户名	<input type="text" name="newName">
+		</br>信息  <div id="mess"><textarea rows="10" cols="30" name="newMessages"></textarea></div>  
+	
 		
+		
+		<input type="submit" value="提交" />
+		</form>
+		</center>
+</div>
+
 
 
 
 <br></br>
 <br></br><br></br><br></br>
 
+<script language="javaScript">
+function showhide()
+{
+  document.getElementById("div_tex").className="div_show";
+}
+</script>
 
 </body> 
 <% 

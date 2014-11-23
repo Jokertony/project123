@@ -12,19 +12,18 @@ java.sql.ResultSet sqlRst;
 Class.forName ("com.mysql.jdbc.Driver").newInstance ();  
 sqlConn= java.sql.DriverManager.getConnection ("jdbc:mysql://"+host+"/"+database,user,pass);  
 sqlStmt=sqlConn.createStatement (java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY); 
-String nName=request.getParameter("newName");
-String newpassword=request.getParameter("newpassword");
-String newContact=request.getParameter("newcontact");
-String sqlQuery="INSERT INTO users VALUES(\""+nName+"\",\""+newpassword+"\",\""+newContact+"\")"; 
-sqlStmt.executeUpdate (sqlQuery);
+
+
+
+String a=(String)session.getAttribute("id1");
+String b=(String)session.getAttribute("id2");
+String c=(String)session.getAttribute("id3");
+String sqlquery="select * from sport where id='"+a+"' or id='"+b+"' or id= '"+c+"'";
+sqlRst=sqlStmt.executeQuery (sqlquery);
+
 
 %>
 
-<% 
-
-sqlStmt.close (); 
-sqlConn.close(); 
-%> 
 
 
 
@@ -36,7 +35,7 @@ sqlConn.close();
 -->
 <html>
 	<head>
-		<title>Aerial by HTML5 UP</title>
+		<title>预约失败啦！</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -60,12 +59,32 @@ sqlConn.close();
 
 				<!-- Header -->
 					<header id="header">
-						<h1>注册成功！</h1>
-						<p>点击下方按钮，开始浏览网站！</p>
+						<h1>预约失败啦！该时间段已被预约！</h1>
+
+						<p>我们给您推荐了以下时间:
+						<center>
+								 <table  border="1" width="50%" bordercolorlight="#CC99FF" cellpadding="2" bordercolordark="#FFFFFF" cellspacing="0"> 
+							<tr> 
+							<td align="center">时间</td> 
+							<td align="center">日期</td> 
+							<td align="center">场地号</td> 
+							
+							</tr> 
+							<% while (sqlRst.next()) { //取得下一条记录 %> 
+							<tr><!--显示记录--> 
+							 <td align="center"><%=sqlRst.getString("watch")%>:00</td>
+							 <td align="center">星期<%=sqlRst.getString("week")%></td> 
+							 <td align="center"><%=sqlRst.getString("field")%>号场地</td>    
+							   </tr> 
+							   <% } %> 
+							   </table> 
+							   </center>
+						
+
 						<nav>
 							<ul>
-								<form action="FrontPageUser.jsp" style="color:black;">
-								 <input type="submit" value="回到首页"  style="color:black;" >
+								<form action="AllMessages.jsp" style="color:black;">
+								 <input type="submit" value="重新预约"  style="color:black;" >
     </form>
 							</ul>
 						</nav>
@@ -73,10 +92,17 @@ sqlConn.close();
 
 				<!-- Footer -->
 					<footer id="footer">
-						<span class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
+						<span class="copyright">&copy; 开发设计：朱骅，江应斌，张文升</span>
 					</footer>
 				
 			</div>
 		</div>
 	</body>
 </html>
+
+<% 
+
+sqlStmt.close (); 
+sqlConn.close(); 
+%> 
+

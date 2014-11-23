@@ -2,6 +2,23 @@
 
 <html>
 	<head>
+	<style>
+.div_show
+{
+   display:block;
+}
+.div_hide
+{
+   display:none;
+}
+</style>
+<% 
+java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+java.util.Date currentTime = new java.util.Date();//得到当前系统时间
+String str_date1 = formatter.format(currentTime); //将日期时间格式化 
+String str_date2 = currentTime.toString(); //将Date型日期时间转换成字符串形式 
+
+%>
 		<title>我要去健身</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
@@ -59,8 +76,24 @@ d[today.getDay()+1],"</font>" );
 								查看留言板
 								<li><a href="ShowAnnoun.jsp" class="fa fa-dribbble"><span>留言板</span></a></li>
 								查看公告
-								<li><a href="addAnouncement.jsp" class="fa fa-envelope-o"><span>注册新用户</span></a></li>
-								增加公告
+								<li><a href="addAnoucement.jsp" class="fa fa-envelope-o"><span>注册新用户</span></a></li>
+								<a href="javaScript:showhide()">增加公告</a>
+<div id="div_tex" class="div_hide">
+    <form align="left" action="addAnnouncementSuc.jsp" method="post">
+		公告时间<input type="text" name="newTime" " style="color:black;" >
+		<br>
+		公告内容<br><textarea rows="5" cols="28" name="newAnnoun" style="color:black;"></textarea>
+		<br>
+		<input type="submit" value="提交留言" style="color:black;" />
+		</form>
+</div>
+
+<script language="javaScript">
+function showhide()
+{
+  document.getElementById("div_tex").className="div_show";
+}
+</script>
 							</ul>
 						</nav>
 					</header>
